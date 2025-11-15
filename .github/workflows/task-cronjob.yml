@@ -21,5 +21,5 @@ jobs:
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
         run: |
           curl -X POST -H "Content-Type: application/json" \
-          -d '{"status":"Task executed successfully"}' \
+          -d '{"message":"Task executed successfully"}' \
           $WEBHOOK_URL
