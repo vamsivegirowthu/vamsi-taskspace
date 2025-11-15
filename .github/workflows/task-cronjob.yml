@@ -1,0 +1,25 @@
+name: Daily Task Update Job
+
+on:
+  schedule:
+    - cron: "30 15 * * 1-5"
+  workflow_dispatch:
+
+jobs:
+  run-task:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Python script
+        run: python taskspace/test.py
+
+      - name: Trigger Webhook
+        env:
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{"status":"Task executed successfully"}' \
+          $WEBHOOK_URL
