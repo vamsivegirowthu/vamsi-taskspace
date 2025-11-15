@@ -2,7 +2,7 @@ name: Daily Task Update Job
 
 on:
   schedule:
-    - cron: "30 15 * * 1-5"
+    - cron: "30 17 * * 1-5"   # 11 PM IST (Mon–Fri)
   workflow_dispatch:
 
 jobs:
